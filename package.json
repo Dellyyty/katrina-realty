@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "scrape": "node scripts/scrape-samson.mjs",
+    "prebuild": "node scripts/scrape-samson.mjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

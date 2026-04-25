@@ -1,0 +1,66 @@
+{
+  "scraped_at": "2026-04-25T23:31:27.625Z",
+  "source": "https://katrinakirtonsherrod.samsonproperties.net/",
+  "listings": [
+    {
+      "id": "-property-382-MDBC2159288-17930-masemore-road-parkton-MD-21120",
+      "address": "17930 Masemore Road",
+      "city": "Parkton",
+      "state": "MD",
+      "zip": "21120",
+      "beds": 4,
+      "baths": 2,
+      "sqft": 2239,
+      "price": 654900,
+      "property_type": "Single Family",
+      "photo_url": "https://d36xftgacqn2p.cloudfront.net/listingphotos382/MDBC2159288-1.jpg?v=",
+      "url": "https://katrinakirtonsherrod.samsonproperties.net/property/382-MDBC2159288-17930-masemore-road-parkton-MD-21120",
+      "listing_date": "2026-04-16T05:00:00.000Z"
+    },
+    {
+      "id": "-property-382-MDBA2209862-1811-w-lombard-street-baltimore-MD-21223",
+      "address": "1811 W Lombard Street",
+      "city": "Baltimore",
+      "state": "MD",
+      "zip": "21223",
+      "beds": 4,
+      "baths": 4,
+      "sqft": 0,
+      "price": 2500,
+      "property_type": "For Rent",
+      "photo_url": "https://d36xftgacqn2p.cloudfront.net/listingphotos382/MDBA2209862-1.jpg?v=",
+      "url": "https://katrinakirtonsherrod.samsonproperties.net/property/382-MDBA2209862-1811-w-lombard-street-baltimore-MD-21223",
+      "listing_date": "2026-04-06T05:00:00.000Z"
+    },
+    {
+      "id": "-property-382-MDHR2052202-4-morning-dove-court-aberdeen-MD-21001",
+      "address": "4 Morning Dove Court",
+      "city": "Aberdeen",
+      "state": "MD",
+      "zip": "21001",
+      "beds": 5,
+      "baths": 3,
+      "sqft": 3712,
+      "price": 550000,
+      "property_type": "Single Family",
+      "photo_url": "https://d36xftgacqn2p.cloudfront.net/listingphotos382/MDHR2052202-1.jpg?v=",
+      "url": "https://katrinakirtonsherrod.samsonproperties.net/property/382-MDHR2052202-4-morning-dove-court-aberdeen-MD-21001",
+      "listing_date": "2026-03-16T05:00:00.000Z"
+    },
+    {
+      "id": "-property-382-MDBA2201658-1811-w-lombard-street-baltimore-MD-21223",
+      "address": "1811 W Lombard Street",
+      "city": "Baltimore",
+      "state": "MD",
+      "zip": "21223",
+      "beds": 4,
+      "baths": 4,
+      "sqft": 1407,
+      "price": 269000,
+      "property_type": "Townhouse",
+      "photo_url": "https://d36xftgacqn2p.cloudfront.net/listingphotos382/MDBA2201658-1.jpg?v=",
+      "url": "https://katrinakirtonsherrod.samsonproperties.net/property/382-MDBA2201658-1811-w-lombard-street-baltimore-MD-21223",
+      "listing_date": "2026-02-07T05:00:00.000Z"
+    }
+  ]
+}

@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { supabase, supabaseConfigured } from '../lib/supabase';
-import { seedListings } from '../data/listings';
-import type { Listing } from '../lib/types';
+import { samson } from '../lib/samson';
 
 interface FormState {
   name: string;
@@ -25,21 +24,7 @@ export default function OpenHouseForm() {
   const [form, setForm] = useState<FormState>(empty);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
-  const [listings, setListings] = useState<Listing[]>(
-    seedListings.filter((l) => l.status === 'for_sale')
-  );
-
-  useEffect(() => {
-    if (!supabaseConfigured || !supabase) return;
-    void (async () => {
-      const { data } = await supabase
-        .from('listings')
-        .select('*')
-        .eq('status', 'for_sale')
-        .order('created_at', { ascending: false });
-      if (data && data.length > 0) setListings(data as Listing[]);
-    })();
-  }, []);
+  const listings = samson.listings.filter((l) => l.property_type !== 'For Rent');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,7 +46,7 @@ export default function OpenHouseForm() {
 
     const selectedListing = listings.find((l) => l.id === form.listing_id);
     const { error } = await supabase.from('open_house_signins').insert({
-      listing_id: form.listing_id || null,
+      listing_id: null,
       listing_address: selectedListing
         ? `${selectedListing.address}, ${selectedListing.city}, ${selectedListing.state}`
         : null,
