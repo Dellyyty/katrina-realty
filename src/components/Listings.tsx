@@ -58,6 +58,20 @@ export default function Listings() {
             No listings in this view yet.
           </div>
         )}
+
+        <div className="mt-16 text-center">
+          <a
+            href="https://www.zillow.com/profile/KatrinaKirtonSherrod"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm border-b border-black/30 pb-1 hover:border-black transition-colors text-black"
+          >
+            View all 58 listings &amp; sales on Zillow
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M7 17L17 7M7 7h10v10" />
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -86,6 +100,8 @@ function FilterBtn({
   );
 }
 
+const KATRINA_ZILLOW = 'https://www.zillow.com/profile/KatrinaKirtonSherrod';
+
 function ListingCard({ listing }: { listing: Listing }) {
   const statusLabel = {
     for_sale: 'For Sale',
@@ -94,11 +110,13 @@ function ListingCard({ listing }: { listing: Listing }) {
     for_rent: 'For Rent',
   }[listing.status];
 
+  const linkUrl = listing.zillow_url ?? KATRINA_ZILLOW;
+
   return (
     <a
-      href={listing.zillow_url ?? undefined}
-      target={listing.zillow_url ? '_blank' : undefined}
-      rel={listing.zillow_url ? 'noopener noreferrer' : undefined}
+      href={linkUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       className="group block bg-white rounded-sm overflow-hidden border border-black/5 transition-all duration-300 hover:shadow-lg"
     >
       <div className="relative aspect-[4/3] bg-gradient-to-br from-stone-200 to-stone-300 overflow-hidden">
@@ -106,7 +124,12 @@ function ListingCard({ listing }: { listing: Listing }) {
           <img
             src={listing.photo_url}
             alt={listing.address}
+            loading="lazy"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            onError={(e) => {
+              const img = e.currentTarget as HTMLImageElement;
+              img.style.display = 'none';
+            }}
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">

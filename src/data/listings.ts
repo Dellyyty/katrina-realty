@@ -1,5 +1,10 @@
 import type { Listing } from '../lib/types';
 
+const KATRINA_ZILLOW = 'https://www.zillow.com/profile/KatrinaKirtonSherrod';
+
+const u = (id: string) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1200&q=80`;
+
 export const seedListings: Listing[] = [
   {
     id: 'masemore-rd',
@@ -12,8 +17,8 @@ export const seedListings: Listing[] = [
     sqft: null,
     price: 654900,
     status: 'for_sale',
-    photo_url: null,
-    zillow_url: 'https://www.zillow.com/profile/KatrinaKirtonSherrod',
+    photo_url: u('1564013799919-ab600027ffc6'),
+    zillow_url: KATRINA_ZILLOW,
     description: 'Beautifully appointed 4-bedroom, 3-bath retreat tucked into the rolling hills of Parkton. Privacy, space, and craftsmanship.',
     featured: true,
     open_house_date: null,
@@ -30,8 +35,8 @@ export const seedListings: Listing[] = [
     sqft: null,
     price: 269000,
     status: 'for_sale',
-    photo_url: null,
-    zillow_url: 'https://www.zillow.com/profile/KatrinaKirtonSherrod',
+    photo_url: u('1568605114967-8130f3a36994'),
+    zillow_url: KATRINA_ZILLOW,
     description: 'Four-bedroom, four-bath Baltimore row home with character and modern updates. Investor or owner-occupant ready.',
     featured: true,
     open_house_date: null,
@@ -48,8 +53,8 @@ export const seedListings: Listing[] = [
     sqft: 1280,
     price: 107800,
     status: 'sold',
-    photo_url: null,
-    zillow_url: null,
+    photo_url: u('1605276374104-dee2a0ed3cd6'),
+    zillow_url: KATRINA_ZILLOW,
     description: 'Represented buyer. Sold April 2026.',
     featured: false,
     open_house_date: null,
@@ -66,8 +71,8 @@ export const seedListings: Listing[] = [
     sqft: 2160,
     price: 380000,
     status: 'sold',
-    photo_url: null,
-    zillow_url: null,
+    photo_url: u('1583608205776-bfd35f0d9f83'),
+    zillow_url: KATRINA_ZILLOW,
     description: 'Represented buyer. Sold October 2025.',
     featured: false,
     open_house_date: null,
@@ -84,11 +89,29 @@ export const seedListings: Listing[] = [
     sqft: 3354,
     price: 411000,
     status: 'sold',
-    photo_url: null,
-    zillow_url: null,
+    photo_url: u('1494526585095-c41746248156'),
+    zillow_url: KATRINA_ZILLOW,
     description: 'Represented buyer. Sold July 2025.',
     featured: false,
     open_house_date: null,
     created_at: '2025-07-21T00:00:00Z',
+  },
+  {
+    id: 'hayward-ave',
+    address: '3512 Hayward Ave',
+    city: 'Baltimore',
+    state: 'MD',
+    zip: '21215',
+    beds: null,
+    baths: null,
+    sqft: null,
+    price: 27000,
+    status: 'sold',
+    photo_url: u('1572120360610-d971b9d7767c'),
+    zillow_url: KATRINA_ZILLOW,
+    description: 'Represented buyer. Sold July 2025.',
+    featured: false,
+    open_house_date: null,
+    created_at: '2025-07-15T00:00:00Z',
   },
 ];
