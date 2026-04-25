@@ -21,7 +21,7 @@ export default function NavBar({ onCtaClick }: NavBarProps) {
           className="font-display text-2xl sm:text-3xl tracking-tight text-black"
           aria-label="Home"
         >
-          Kirton Sherrod<sup className="text-[0.5em] ml-0.5">®</sup>
+          KKS REALTY<sup className="text-[0.5em] ml-0.5">®</sup>
         </button>
 
         <div className="hidden md:flex items-center gap-8">

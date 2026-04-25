@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div>
           <div className="font-display text-2xl text-black">
-            Kirton Sherrod<sup className="text-[0.5em] ml-0.5">®</sup>
+            KKS REALTY<sup className="text-[0.5em] ml-0.5">®</sup>
           </div>
           <p className="text-xs mt-2" style={{ color: '#6F6F6F' }}>
             {agent.title} · {agent.brokerage}
