@@ -61,12 +61,12 @@ export default function Listings() {
 
         <div className="mt-16 text-center">
           <a
-            href="https://www.zillow.com/profile/KatrinaKirtonSherrod"
+            href="https://katrinakirtonsherrod.samsonproperties.net"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm border-b border-black/30 pb-1 hover:border-black transition-colors text-black"
           >
-            View all 58 listings &amp; sales on Zillow
+            See all listings on Samson Properties
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M7 17L17 7M7 7h10v10" />
             </svg>
@@ -100,7 +100,7 @@ function FilterBtn({
   );
 }
 
-const KATRINA_ZILLOW = 'https://www.zillow.com/profile/KatrinaKirtonSherrod';
+const KATRINA_SITE = 'https://katrinakirtonsherrod.samsonproperties.net';
 
 function ListingCard({ listing }: { listing: Listing }) {
   const statusLabel = {
@@ -110,7 +110,7 @@ function ListingCard({ listing }: { listing: Listing }) {
     for_rent: 'For Rent',
   }[listing.status];
 
-  const linkUrl = listing.zillow_url ?? KATRINA_ZILLOW;
+  const linkUrl = listing.zillow_url ?? KATRINA_SITE;
 
   return (
     <a

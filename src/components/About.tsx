@@ -72,17 +72,31 @@ export default function About() {
             <p className="text-sm mt-1" style={{ color: '#6F6F6F' }}>
               {agent.title} · {agent.brokerage}
             </p>
-            <a
-              href={agent.zillowUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs mt-3 border-b border-black/30 pb-0.5 hover:border-black transition-colors text-black"
-            >
-              View Zillow Profile · 5.0 ★ (3 reviews)
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M7 17L17 7M7 7h10v10" />
-              </svg>
-            </a>
+            <div className="flex flex-col sm:flex-row gap-x-6 gap-y-2 mt-4">
+              <a
+                href={agent.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs border-b border-black/30 pb-0.5 hover:border-black transition-colors text-black"
+              >
+                Samson Properties Profile
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M7 17L17 7M7 7h10v10" />
+                </svg>
+              </a>
+              <a
+                href={agent.zillowUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs border-b border-black/15 pb-0.5 hover:border-black transition-colors"
+                style={{ color: '#6F6F6F' }}
+              >
+                Zillow · 5.0 ★
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M7 17L17 7M7 7h10v10" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
