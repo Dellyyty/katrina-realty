@@ -1,0 +1,16 @@
+name: Daily Samson Sync
+
+on:
+  schedule:
+    # 10:00 UTC = 6:00 AM ET (5:00 AM during EST). Runs daily.
+    - cron: '0 10 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify rebuild
+        run: |
+          curl -fsSL -X POST -d '{}' \
+            https://api.netlify.com/build_hooks/69ed4eeab47124cb2a65ce9e
