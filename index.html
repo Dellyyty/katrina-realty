@@ -16,6 +16,20 @@
   </head>
   <body>
     <div id="root"></div>
+    <!--
+      Hidden form so Netlify's build-time bot can detect this form.
+      The visible form lives in OpenHouseForm.tsx and POSTs to / with the
+      same `name` so Netlify routes submissions correctly.
+    -->
+    <form name="open-house-signin" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="property" />
+      <input type="text" name="working_with_agent" />
+      <textarea name="notes"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

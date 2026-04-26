@@ -1,6 +1,12 @@
 import { useState } from 'react';
-import { supabase, supabaseConfigured } from '../lib/supabase';
 import { samson } from '../lib/samson';
+
+const NETLIFY_FORM_NAME = 'open-house-signin';
+
+const encode = (data: Record<string, string>): string =>
+  Object.keys(data)
+    .map((k) => `${encodeURIComponent(k)}=${encodeURIComponent(data[k])}`)
+    .join('&');
 
 interface FormState {
   name: string;
@@ -37,33 +43,33 @@ export default function OpenHouseForm() {
     setStatus('submitting');
     setErrorMsg('');
 
-    if (!supabaseConfigured || !supabase) {
-      // Fallback: log to console + simulate success so the form is usable in dev
-      console.warn('Supabase not configured. Sign-in:', form);
-      setTimeout(() => setStatus('success'), 600);
-      return;
-    }
-
     const selectedListing = listings.find((l) => l.id === form.listing_id);
-    const { error } = await supabase.from('open_house_signins').insert({
-      listing_id: null,
-      listing_address: selectedListing
-        ? `${selectedListing.address}, ${selectedListing.city}, ${selectedListing.state}`
-        : null,
-      name: form.name,
-      email: form.email,
-      phone: form.phone,
-      working_with_agent: form.working_with_agent === 'yes',
-      notes: form.notes || null,
-    });
+    const propertyLabel = selectedListing
+      ? `${selectedListing.address}, ${selectedListing.city}, ${selectedListing.state}`
+      : '';
 
-    if (error) {
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({
+          'form-name': NETLIFY_FORM_NAME,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          property: propertyLabel,
+          working_with_agent: form.working_with_agent === 'yes' ? 'Yes' : 'No',
+          notes: form.notes,
+          'bot-field': '',
+        }),
+      });
+      if (!res.ok) throw new Error(`Submission failed (${res.status})`);
+      setStatus('success');
+      setForm(empty);
+    } catch (err) {
       setStatus('error');
-      setErrorMsg(error.message);
-      return;
+      setErrorMsg(err instanceof Error ? err.message : 'Could not submit. Try again.');
     }
-    setStatus('success');
-    setForm(empty);
   };
 
   if (status === 'success') {
@@ -112,7 +118,18 @@ export default function OpenHouseForm() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white border border-black/10 rounded-sm p-8 sm:p-10 space-y-6">
+        <form
+          name={NETLIFY_FORM_NAME}
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
+          className="bg-white border border-black/10 rounded-sm p-8 sm:p-10 space-y-6"
+        >
+          <input type="hidden" name="form-name" value={NETLIFY_FORM_NAME} />
+          <p hidden>
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </p>
           <div className="grid sm:grid-cols-2 gap-6">
             <Field label="Full Name *">
               <input
