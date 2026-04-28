@@ -30,7 +30,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href={`tel:${agent.officePhone.replace(/\D/g, '')}`} className="hover:text-black transition-colors">
-                  {agent.officePhone} <span className="text-xs">(Samson office)</span>
+                  {agent.officePhone} <span className="text-xs">(SAMSON office)</span>
                 </a>
               </li>
               <li>
@@ -50,7 +50,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm" style={{ color: '#6F6F6F' }}>
               <li>
                 <a href={agent.websiteUrl} target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
-                  Samson Properties Profile →
+                  SAMSON PROPERTIES Profile →
                 </a>
               </li>
               <li>

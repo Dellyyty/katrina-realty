@@ -33,7 +33,7 @@ export default function Contact() {
             className="border border-black/10 rounded-sm p-6 hover:border-black transition-colors text-center"
           >
             <div className="text-xs uppercase tracking-[0.15em]" style={{ color: '#6F6F6F' }}>Listings</div>
-            <div className="font-display text-xl text-black mt-2">Samson Profile</div>
+            <div className="font-display text-xl text-black mt-2">SAMSON Profile</div>
           </a>
           <a
             href={agent.instagramUrl}

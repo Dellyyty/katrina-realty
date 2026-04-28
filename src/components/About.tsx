@@ -94,7 +94,7 @@ export default function About() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs border-b border-black/30 pb-0.5 hover:border-black transition-colors text-black"
               >
-                Samson Properties Profile
+                SAMSON PROPERTIES Profile
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M7 17L17 7M7 7h10v10" />
                 </svg>

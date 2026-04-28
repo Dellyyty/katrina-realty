@@ -47,7 +47,7 @@ export default function Listings() {
             </h2>
             {lastUpdated && (
               <p className="text-xs mt-3" style={{ color: '#6F6F6F' }}>
-                Live from Samson Properties · synced {lastUpdated}
+                Live from SAMSON PROPERTIES · synced {lastUpdated}
               </p>
             )}
           </div>
@@ -83,7 +83,7 @@ export default function Listings() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-sm border-b border-black/30 pb-1 hover:border-black transition-colors text-black"
           >
-            See all listings on Samson Properties
+            See all listings on SAMSON PROPERTIES
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M7 17L17 7M7 7h10v10" />
             </svg>
