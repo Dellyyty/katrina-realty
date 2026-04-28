@@ -20,9 +20,17 @@ export default function About() {
 
           <div className="mt-10">
             <p className="text-xs uppercase tracking-[0.2em] mb-4" style={{ color: '#6F6F6F' }}>
-              Specialties
+              Specialties &amp; Certifications
             </p>
             <div className="flex flex-wrap gap-2">
+              {agent.certifications.map((c) => (
+                <span
+                  key={c}
+                  className="text-xs sm:text-sm px-4 py-1.5 rounded-full bg-black text-white"
+                >
+                  {c}
+                </span>
+              ))}
               {agent.specialties.map((s) => (
                 <span
                   key={s}
