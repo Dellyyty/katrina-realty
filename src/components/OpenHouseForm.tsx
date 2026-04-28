@@ -15,7 +15,7 @@ interface FormState {
   phone: string;
   listing_id: string;
   reason: '' | 'open_house' | 'inquiry';
-  intent: '' | 'buying' | 'selling' | 'both' | 'just_looking';
+  intent: '' | 'buying' | 'selling' | 'renting' | 'both' | 'just_looking';
   working_with_agent: 'yes' | 'no' | '';
   notes: string;
 }
@@ -40,6 +40,7 @@ const REASON_LABEL: Record<string, string> = {
 const INTENT_LABEL: Record<string, string> = {
   buying: 'Buying',
   selling: 'Selling',
+  renting: 'Renting',
   both: 'Both',
   just_looking: 'Just looking',
 };
@@ -223,6 +224,7 @@ export default function OpenHouseForm() {
                 <option value="">— Select —</option>
                 <option value="buying">Buying</option>
                 <option value="selling">Selling</option>
+                <option value="renting">Renting</option>
                 <option value="both">Both</option>
                 <option value="just_looking">Just looking</option>
               </select>
