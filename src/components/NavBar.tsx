@@ -24,7 +24,7 @@ export default function NavBar({ onCtaClick }: NavBarProps) {
           <img
             src="/kks-logo.png"
             alt="KKS Home Group of Samson Properties"
-            className="h-12 sm:h-14 w-auto"
+            className="h-20 sm:h-28 w-auto"
           />
         </button>
 
