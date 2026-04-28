@@ -9,7 +9,7 @@ export default function Footer() {
             <img
               src="/kks-logo.png"
               alt="KKS Home Group of Samson Properties"
-              className="h-24 w-auto mb-4"
+              className="h-40 sm:h-48 w-auto mb-4"
               loading="lazy"
             />
             <p className="text-sm" style={{ color: '#6F6F6F' }}>
