@@ -9,7 +9,8 @@ const encode = (data: Record<string, string>): string =>
     .join('&');
 
 interface FormState {
-  name: string;
+  first_name: string;
+  last_name: string;
   email: string;
   phone: string;
   listing_id: string;
@@ -18,7 +19,8 @@ interface FormState {
 }
 
 const empty: FormState = {
-  name: '',
+  first_name: '',
+  last_name: '',
   email: '',
   phone: '',
   listing_id: '',
@@ -34,9 +36,9 @@ export default function OpenHouseForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.email) {
+    if (!form.first_name || !form.last_name || !form.email) {
       setStatus('error');
-      setErrorMsg('Please fill in your name and email.');
+      setErrorMsg('Please fill in your first name, last name, and email.');
       return;
     }
 
@@ -54,7 +56,8 @@ export default function OpenHouseForm() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({
           'form-name': NETLIFY_FORM_NAME,
-          name: form.name,
+          first_name: form.first_name,
+          last_name: form.last_name,
           email: form.email,
           phone: form.phone,
           property: propertyLabel,
@@ -131,24 +134,39 @@ export default function OpenHouseForm() {
             <label>Don't fill this out: <input name="bot-field" /></label>
           </p>
           <div className="grid sm:grid-cols-2 gap-6">
-            <Field label="Full Name *">
+            <Field label="First Name *">
               <input
                 required
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                name="first_name"
+                autoComplete="given-name"
+                value={form.first_name}
+                onChange={(e) => setForm({ ...form, first_name: e.target.value })}
                 className="input"
               />
             </Field>
-            <Field label="Email *">
+            <Field label="Last Name *">
               <input
                 required
-                type="email"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                name="last_name"
+                autoComplete="family-name"
+                value={form.last_name}
+                onChange={(e) => setForm({ ...form, last_name: e.target.value })}
                 className="input"
               />
             </Field>
           </div>
+
+          <Field label="Email *">
+            <input
+              required
+              type="email"
+              name="email"
+              autoComplete="email"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              className="input"
+            />
+          </Field>
 
           <div className="grid sm:grid-cols-2 gap-6">
             <Field label="Phone">
