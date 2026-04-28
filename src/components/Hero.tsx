@@ -116,8 +116,8 @@ export default function Hero() {
           </h1>
 
           <p
-            className="text-base sm:text-lg max-w-2xl mt-8 leading-relaxed animate-fade-rise-delay"
-            style={{ color: '#6F6F6F' }}
+            className="text-base sm:text-lg max-w-2xl mt-8 leading-relaxed animate-fade-rise-delay font-medium"
+            style={{ color: '#000000' }}
           >
             Guiding first-time buyers, growing families, and seasoned investors through
             Maryland, Washington D.C., and Pennsylvania. Trusted advisor, practiced negotiator,
