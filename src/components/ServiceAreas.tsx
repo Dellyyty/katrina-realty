@@ -14,9 +14,9 @@ export default function ServiceAreas() {
               Serving the <em className="text-white/60">DMV</em> &amp; beyond.
             </h2>
             <p className="mt-8 text-base sm:text-lg leading-relaxed text-white/70 max-w-md">
-              Maryland, Washington D.C., and Pennsylvania. From Baltimore row homes to
-              Harford County estates, Katrina knows the streets, the schools, and the
-              stories behind every neighborhood.
+              Maryland, Washington D.C., Pennsylvania, and Delaware. From Baltimore row
+              homes to Harford County estates, Katrina knows the streets, the schools,
+              and the stories behind every neighborhood.
             </p>
           </div>
 
