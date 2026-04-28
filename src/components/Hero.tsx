@@ -60,17 +60,39 @@ export default function Hero() {
   return (
     <section id="top" className="relative min-h-screen w-full overflow-hidden bg-white">
       <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Always-on warm gradient base — works on every device */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FBF7EF] via-white to-[#F4ECDC]" />
+
+        {/* Floating decorative orbs (animated) */}
+        <div className="absolute -top-40 -right-32 w-[420px] h-[420px] rounded-full bg-[#C99B4A]/15 blur-3xl hero-orb-1" />
+        <div className="absolute top-1/3 -left-40 w-[480px] h-[480px] rounded-full bg-[#A07832]/10 blur-3xl hero-orb-2" />
+        <div className="absolute -bottom-40 right-1/4 w-[520px] h-[520px] rounded-full bg-[#E8D9B8]/40 blur-3xl hero-orb-3" />
+
+        {/* Subtle dot grid texture */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle, #000 1px, transparent 1px)',
+            backgroundSize: '32px 32px',
+          }}
+        />
+
+        {/* Desktop-only video enhancement */}
         <video
           ref={videoRef}
           src={VIDEO_URL}
           muted
           playsInline
           autoPlay
-          preload="auto"
-          className="absolute w-full h-auto object-cover"
+          preload="metadata"
+          poster=""
+          className="hidden md:block absolute w-full h-auto object-cover mix-blend-multiply"
           style={{ top: '300px', inset: 'auto 0 0 0', opacity: 0, transition: 'opacity 50ms linear' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
+
+        {/* Top + bottom fade so text always reads cleanly */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-transparent to-white" />
       </div>
 
       <div className="relative z-10">

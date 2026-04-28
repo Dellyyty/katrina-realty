@@ -32,3 +32,26 @@
 .font-body {
   font-family: 'Inter', system-ui, sans-serif;
 }
+
+@keyframes hero-orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 40px) scale(1.05); }
+}
+@keyframes hero-orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.08); }
+}
+@keyframes hero-orb-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-20px, -20px) scale(0.95); }
+}
+
+.hero-orb-1 { animation: hero-orb-drift-1 18s ease-in-out infinite; }
+.hero-orb-2 { animation: hero-orb-drift-2 22s ease-in-out infinite; }
+.hero-orb-3 { animation: hero-orb-drift-3 26s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb-1, .hero-orb-2, .hero-orb-3 {
+    animation: none;
+  }
+}
