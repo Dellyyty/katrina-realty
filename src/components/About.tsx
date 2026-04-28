@@ -31,14 +31,21 @@ export default function About() {
                   {c}
                 </span>
               ))}
-              {agent.specialties.map((s) => (
-                <span
-                  key={s}
-                  className="text-xs sm:text-sm px-4 py-1.5 rounded-full border border-black/10 text-black"
-                >
-                  {s}
-                </span>
-              ))}
+              {agent.specialties.map((s) => {
+                const highlighted = s === 'First Time Homebuyers' || s === 'Luxury Homes';
+                return (
+                  <span
+                    key={s}
+                    className={
+                      highlighted
+                        ? 'text-xs sm:text-sm px-4 py-1.5 rounded-full bg-black text-white'
+                        : 'text-xs sm:text-sm px-4 py-1.5 rounded-full border border-black/10 text-black'
+                    }
+                  >
+                    {s}
+                  </span>
+                );
+              })}
             </div>
           </div>
 
