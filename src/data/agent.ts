@@ -13,7 +13,7 @@ export const agent = {
   averagePrice: 194000,
   phone: '443-616-9770',
   officePhone: '443-343-7660',
-  email: 'realtorkks@gmail.com',
+  email: 'Katrina@kkstherealtor.com',
   websiteUrl: 'https://katrinakirtonsherrod.samsonproperties.net',
   zillowUrl: 'https://www.zillow.com/profile/KatrinaKirtonSherrod',
   instagramUrl: 'https://www.instagram.com/kkstherealtor',

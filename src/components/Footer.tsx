@@ -25,7 +25,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm" style={{ color: '#6F6F6F' }}>
               <li>
                 <a href={`tel:${agent.phone.replace(/\D/g, '')}`} className="hover:text-black transition-colors">
-                  {agent.phone} <span className="text-xs">(direct)</span>
+                  {agent.phone} <span className="text-xs">(DIRECT)</span>
                 </a>
               </li>
               <li>
