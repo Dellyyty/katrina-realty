@@ -59,22 +59,58 @@ export default function Hero() {
 
   return (
     <section id="top" className="relative min-h-screen w-full overflow-hidden bg-white">
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* Always-on warm gradient base — works on every device */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FBF7EF] via-white to-[#F4ECDC]" />
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Warm cream-to-gold gradient base */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FBF4E3] via-[#F4E8CC] to-[#E8D4A8]" />
 
-        {/* Floating decorative orbs (animated) */}
-        <div className="absolute -top-40 -right-32 w-[420px] h-[420px] rounded-full bg-[#C99B4A]/15 blur-3xl hero-orb-1" />
-        <div className="absolute top-1/3 -left-40 w-[480px] h-[480px] rounded-full bg-[#A07832]/10 blur-3xl hero-orb-2" />
-        <div className="absolute -bottom-40 right-1/4 w-[520px] h-[520px] rounded-full bg-[#E8D9B8]/40 blur-3xl hero-orb-3" />
+        {/* Visible animated gold orbs — large and on-screen */}
+        <div className="absolute top-20 -right-20 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] rounded-full bg-[#C99B4A] opacity-40 blur-2xl hero-orb-1" />
+        <div className="absolute top-1/2 -left-32 w-[320px] h-[320px] sm:w-[520px] sm:h-[520px] rounded-full bg-[#A07832] opacity-30 blur-2xl hero-orb-2" />
+        <div className="absolute -bottom-20 right-1/4 w-[360px] h-[360px] sm:w-[580px] sm:h-[580px] rounded-full bg-[#D4A85A] opacity-35 blur-2xl hero-orb-3" />
 
-        {/* Subtle dot grid texture */}
+        {/* Animated flowing architectural lines (SVG) */}
+        <svg
+          className="absolute inset-0 w-full h-full opacity-20"
+          viewBox="0 0 800 1200"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <defs>
+            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#8B6914" />
+              <stop offset="100%" stopColor="#C99B4A" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M0,400 Q200,300 400,450 T800,400"
+            stroke="url(#lineGrad)"
+            strokeWidth="2"
+            fill="none"
+            className="hero-line-1"
+          />
+          <path
+            d="M0,700 Q300,600 500,750 T800,700"
+            stroke="url(#lineGrad)"
+            strokeWidth="1.5"
+            fill="none"
+            className="hero-line-2"
+          />
+          <path
+            d="M0,1000 Q250,900 450,1050 T800,1000"
+            stroke="url(#lineGrad)"
+            strokeWidth="1"
+            fill="none"
+            className="hero-line-3"
+          />
+        </svg>
+
+        {/* Dot grid texture */}
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.06]"
           style={{
             backgroundImage:
               'radial-gradient(circle, #000 1px, transparent 1px)',
-            backgroundSize: '32px 32px',
+            backgroundSize: '24px 24px',
           }}
         />
 
@@ -86,13 +122,12 @@ export default function Hero() {
           playsInline
           autoPlay
           preload="metadata"
-          poster=""
           className="hidden md:block absolute w-full h-auto object-cover mix-blend-multiply"
           style={{ top: '300px', inset: 'auto 0 0 0', opacity: 0, transition: 'opacity 50ms linear' }}
         />
 
-        {/* Top + bottom fade so text always reads cleanly */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-transparent to-white" />
+        {/* Top + bottom soft fade so text always reads cleanly */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/60" />
       </div>
 
       <div className="relative z-10">
