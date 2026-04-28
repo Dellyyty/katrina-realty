@@ -18,10 +18,14 @@ export default function NavBar({ onCtaClick }: NavBarProps) {
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 sm:px-8 py-6">
         <button
           onClick={() => handleNav('top')}
-          className="font-display text-2xl sm:text-3xl tracking-tight text-black"
-          aria-label="Home"
+          aria-label="KKS Home Group — Home"
+          className="flex items-center"
         >
-          KKS REALTY<sup className="text-[0.5em] ml-0.5">®</sup>
+          <img
+            src="/kks-logo.png"
+            alt="KKS Home Group of Samson Properties"
+            className="h-12 sm:h-14 w-auto"
+          />
         </button>
 
         <div className="hidden md:flex items-center gap-8">
