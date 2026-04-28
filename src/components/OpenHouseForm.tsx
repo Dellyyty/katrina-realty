@@ -14,6 +14,8 @@ interface FormState {
   email: string;
   phone: string;
   listing_id: string;
+  reason: '' | 'open_house' | 'inquiry';
+  intent: '' | 'buying' | 'selling' | 'both' | 'just_looking';
   working_with_agent: 'yes' | 'no' | '';
   notes: string;
 }
@@ -24,8 +26,22 @@ const empty: FormState = {
   email: '',
   phone: '',
   listing_id: '',
+  reason: '',
+  intent: '',
   working_with_agent: '',
   notes: '',
+};
+
+const REASON_LABEL: Record<string, string> = {
+  open_house: 'Visiting an open house',
+  inquiry: 'Have an inquiry',
+};
+
+const INTENT_LABEL: Record<string, string> = {
+  buying: 'Buying',
+  selling: 'Selling',
+  both: 'Both',
+  just_looking: 'Just looking',
 };
 
 export default function OpenHouseForm() {
@@ -60,6 +76,8 @@ export default function OpenHouseForm() {
           last_name: form.last_name,
           email: form.email,
           phone: form.phone,
+          reason: form.reason ? REASON_LABEL[form.reason] : '',
+          intent: form.intent ? INTENT_LABEL[form.intent] : '',
           property: propertyLabel,
           working_with_agent: form.working_with_agent === 'yes' ? 'Yes' : 'No',
           notes: form.notes,
@@ -107,7 +125,7 @@ export default function OpenHouseForm() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-xs uppercase tracking-[0.2em] mb-4" style={{ color: '#6F6F6F' }}>
-            Open House Sign-In
+            Open House Sign-In / Inquiry Form
           </p>
           <h2
             className="font-display text-4xl sm:text-5xl md:text-6xl text-black"
@@ -116,8 +134,9 @@ export default function OpenHouseForm() {
             Stop by. <em style={{ color: '#6F6F6F' }}>Sign in.</em>
           </h2>
           <p className="mt-6 text-base sm:text-lg leading-relaxed max-w-xl mx-auto" style={{ color: '#6F6F6F' }}>
-            Visiting an open house? Drop your details below and Katrina will follow up
-            with listings, market insights, or simply to say thanks for stopping by.
+            Visiting an open house, or have an inquiry? Drop your details below and
+            Katrina will follow up with listings, market insights, or simply to say
+            thanks for reaching out.
           </p>
         </div>
 
@@ -172,13 +191,45 @@ export default function OpenHouseForm() {
             <Field label="Phone">
               <input
                 type="tel"
+                name="phone"
+                autoComplete="tel"
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 className="input"
               />
             </Field>
+            <Field label="Reason for reaching out">
+              <select
+                name="reason"
+                value={form.reason}
+                onChange={(e) => setForm({ ...form, reason: e.target.value as FormState['reason'] })}
+                className="input"
+              >
+                <option value="">— Select —</option>
+                <option value="open_house">Visiting an open house</option>
+                <option value="inquiry">Have an inquiry</option>
+              </select>
+            </Field>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-6">
+            <Field label="Interested in buying or selling?">
+              <select
+                name="intent"
+                value={form.intent}
+                onChange={(e) => setForm({ ...form, intent: e.target.value as FormState['intent'] })}
+                className="input"
+              >
+                <option value="">— Select —</option>
+                <option value="buying">Buying</option>
+                <option value="selling">Selling</option>
+                <option value="both">Both</option>
+                <option value="just_looking">Just looking</option>
+              </select>
+            </Field>
             <Field label="Which property?">
               <select
+                name="property"
                 value={form.listing_id}
                 onChange={(e) => setForm({ ...form, listing_id: e.target.value })}
                 className="input"
