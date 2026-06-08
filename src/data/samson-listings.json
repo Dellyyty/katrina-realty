@@ -1,7 +1,22 @@
 {
-  "scraped_at": "2026-04-28T03:07:42.514Z",
+  "scraped_at": "2026-06-08T17:27:08.103Z",
   "source": "https://katrinakirtonsherrod.samsonproperties.net/",
   "listings": [
+    {
+      "id": "-property-382-MDBA2213914-2906-rockrose-avenue-baltimore-MD-21215",
+      "address": "2906 Rockrose Avenue",
+      "city": "Baltimore",
+      "state": "MD",
+      "zip": "21215",
+      "beds": 6,
+      "baths": 0,
+      "sqft": 0,
+      "price": 175000,
+      "property_type": "Multi-Family",
+      "photo_url": "https://d36xftgacqn2p.cloudfront.net/listingphotos382/MDBA2213914-1.jpg?v=",
+      "url": "https://katrinakirtonsherrod.samsonproperties.net/property/382-MDBA2213914-2906-rockrose-avenue-baltimore-MD-21215",
+      "listing_date": "2026-05-05T05:00:00.000Z"
+    },
     {
       "id": "-property-382-MDBC2159288-17930-masemore-road-parkton-MD-21120",
       "address": "17930 Masemore Road",
@@ -31,21 +46,6 @@
       "photo_url": "https://d36xftgacqn2p.cloudfront.net/listingphotos382/MDBA2209862-1.jpg?v=",
       "url": "https://katrinakirtonsherrod.samsonproperties.net/property/382-MDBA2209862-1811-w-lombard-street-baltimore-MD-21223",
       "listing_date": "2026-04-06T05:00:00.000Z"
-    },
-    {
-      "id": "-property-382-MDHR2052202-4-morning-dove-court-aberdeen-MD-21001",
-      "address": "4 Morning Dove Court",
-      "city": "Aberdeen",
-      "state": "MD",
-      "zip": "21001",
-      "beds": 5,
-      "baths": 3,
-      "sqft": 3712,
-      "price": 550000,
-      "property_type": "Single Family",
-      "photo_url": "https://d36xftgacqn2p.cloudfront.net/listingphotos382/MDHR2052202-1.jpg?v=",
-      "url": "https://katrinakirtonsherrod.samsonproperties.net/property/382-MDHR2052202-4-morning-dove-court-aberdeen-MD-21001",
-      "listing_date": "2026-03-16T05:00:00.000Z"
     },
     {
       "id": "-property-382-MDBA2201658-1811-w-lombard-street-baltimore-MD-21223",

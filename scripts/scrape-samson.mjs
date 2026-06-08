@@ -98,10 +98,24 @@ async function scrape() {
     };
   });
 
-  // Sort by listing_date desc, then dedupe by id.
+  // Sort by listing_date desc, then dedupe.
   listings.sort((a, b) => (b.listing_date || '').localeCompare(a.listing_date || ''));
-  const seen = new Set();
-  const deduped = listings.filter((l) => (seen.has(l.id) ? false : seen.add(l.id)));
+
+  // First dedupe by id (exact same MLS listing appearing twice).
+  const seenIds = new Set();
+  const byId = listings.filter((l) => (seenIds.has(l.id) ? false : seenIds.add(l.id)));
+
+  // Then collapse same-address duplicates within the same transaction kind.
+  // A property can legitimately appear once For Sale and once For Rent — keep
+  // those separate — but two For-Sale MLS entries at the same address (e.g. a
+  // home cross-listed as both Townhouse and Multi-Family) should show once.
+  // Listings are sorted newest-first, so the first occurrence wins.
+  const seenKeys = new Set();
+  const deduped = byId.filter((l) => {
+    const kind = l.property_type === 'For Rent' ? 'rent' : 'sale';
+    const key = `${l.address.toLowerCase().trim()}|${l.city.toLowerCase().trim()}|${kind}`;
+    return seenKeys.has(key) ? false : seenKeys.add(key);
+  });
 
   return deduped;
 }
