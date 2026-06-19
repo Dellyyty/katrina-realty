@@ -120,7 +120,7 @@ export default function Hero() {
             style={{ color: '#000000' }}
           >
             Guiding first-time buyers, growing families, and seasoned investors through
-            Maryland, Washington D.C., and Pennsylvania. Trusted advisor, practiced negotiator,
+            Maryland, Washington D.C., Delaware, and Pennsylvania. Trusted advisor, practiced negotiator,
             neighborhood expert.
           </p>
 
