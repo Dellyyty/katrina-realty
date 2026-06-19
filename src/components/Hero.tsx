@@ -119,7 +119,7 @@ export default function Hero() {
             className="text-base sm:text-lg max-w-2xl mt-8 leading-relaxed animate-fade-rise-delay font-medium"
             style={{ color: '#000000' }}
           >
-            Guiding first-time buyers, growing families, and seasoned investors through
+            Guiding buyers and sellers through
             Maryland, Washington D.C., Delaware, and Pennsylvania. Trusted advisor, practiced negotiator,
             neighborhood expert.
           </p>
