@@ -13,6 +13,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <title>Katrina Kirton Sherrod — REALTOR® | Maryland · DC · Pennsylvania</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Katrina Kirton Sherrod",
+      "alternateName": "KKS The REALTOR®",
+      "url": "https://kkstherealtor.com",
+      "image": "https://kkstherealtor.com/katrina.jpg",
+      "telephone": "+1-443-616-9770",
+      "email": "Katrina@kkstherealtor.com",
+      "parentOrganization": { "@type": "Organization", "name": "Samson Properties" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1403 Conowingo Rd",
+        "addressLocality": "Bel Air",
+        "addressRegion": "MD",
+        "postalCode": "21014",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        "Maryland", "Washington D.C.", "Pennsylvania", "Delaware",
+        "Cecil County MD", "Harford County MD", "Montgomery County MD",
+        "Baltimore City MD", "Baltimore County MD", "Howard County MD",
+        "Prince George's County MD", "Anne Arundel County MD", "Charles County MD",
+        "York County PA", "Lancaster County PA", "New Castle County DE"
+      ],
+      "knowsAbout": ["Residential real estate", "First-time homebuyers", "Investment properties", "Relocation", "Military relocation (MRP)", "Luxury homes", "Senior communities"],
+      "sameAs": [
+        "https://katrinakirtonsherrod.samsonproperties.net",
+        "https://www.zillow.com/profile/KatrinaKirtonSherrod",
+        "https://www.instagram.com/kkstherealtor"
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
@@ -31,6 +65,12 @@
       <input type="text" name="property" />
       <input type="text" name="working_with_agent" />
       <textarea name="notes"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
+    <!-- Hidden form for blog email capture (Netlify Forms). Visible form lives in BlogSubscribe.tsx. -->
+    <form name="blog-subscribe" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="email" name="email" />
+      <input type="text" name="source" />
       <input type="text" name="bot-field" />
     </form>
     <script type="module" src="/src/main.tsx"></script>

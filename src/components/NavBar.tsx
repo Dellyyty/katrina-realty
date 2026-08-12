@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 interface NavBarProps {
   onCtaClick?: () => void;
@@ -6,12 +7,28 @@ interface NavBarProps {
 
 export default function NavBar({ onCtaClick }: NavBarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const onHome = location.pathname === '/';
 
   const handleNav = (id: string) => {
     setMenuOpen(false);
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (onHome) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      navigate(`/#${id}`);
+    }
   };
+
+  const sectionLink = (id: string, label: string, primary = false) => (
+    <button
+      onClick={() => handleNav(id)}
+      className={`text-sm transition-colors ${primary ? 'text-black hover:opacity-70' : 'text-[#6F6F6F] hover:text-black'}`}
+    >
+      {label}
+    </button>
+  );
 
   return (
     <nav className="relative z-20 w-full">
@@ -29,12 +46,19 @@ export default function NavBar({ onCtaClick }: NavBarProps) {
         </button>
 
         <div className="hidden md:flex items-center gap-8">
-          <button onClick={() => handleNav('top')} className="text-sm text-black transition-colors hover:opacity-70">Home</button>
-          <button onClick={() => handleNav('about')} className="text-sm text-[#6F6F6F] transition-colors hover:text-black">About</button>
-          <button onClick={() => handleNav('listings')} className="text-sm text-[#6F6F6F] transition-colors hover:text-black">Listings</button>
-          <button onClick={() => handleNav('open-house')} className="text-sm text-[#6F6F6F] transition-colors hover:text-black">Open House</button>
-          <button onClick={() => handleNav('reviews')} className="text-sm text-[#6F6F6F] transition-colors hover:text-black">Reviews</button>
-          <button onClick={() => handleNav('contact')} className="text-sm text-[#6F6F6F] transition-colors hover:text-black">Contact</button>
+          {sectionLink('top', 'Home', onHome)}
+          {sectionLink('about', 'About')}
+          {sectionLink('listings', 'Listings')}
+          {sectionLink('open-house', 'Open House')}
+          {sectionLink('reviews', 'Reviews')}
+          <Link
+            to="/blog"
+            onClick={() => setMenuOpen(false)}
+            className={`text-sm transition-colors ${!onHome ? 'text-black hover:opacity-70' : 'text-[#6F6F6F] hover:text-black'}`}
+          >
+            Blog
+          </Link>
+          {sectionLink('contact', 'Contact')}
         </div>
 
         <button
@@ -62,6 +86,7 @@ export default function NavBar({ onCtaClick }: NavBarProps) {
           <button onClick={() => handleNav('listings')} className="text-left text-sm text-[#6F6F6F]">Listings</button>
           <button onClick={() => handleNav('open-house')} className="text-left text-sm text-[#6F6F6F]">Open House</button>
           <button onClick={() => handleNav('reviews')} className="text-left text-sm text-[#6F6F6F]">Reviews</button>
+          <Link to="/blog" onClick={() => setMenuOpen(false)} className="text-left text-sm text-[#6F6F6F]">Blog</Link>
           <button onClick={() => handleNav('contact')} className="text-left text-sm text-[#6F6F6F]">Contact</button>
           <button
             onClick={onCtaClick ?? (() => handleNav('contact'))}

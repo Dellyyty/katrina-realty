@@ -6,13 +6,17 @@
   "scripts": {
     "dev": "vite",
     "scrape": "node scripts/scrape-samson.mjs",
-    "prebuild": "node scripts/scrape-samson.mjs",
+    "blog": "node scripts/build-blog.mjs",
+    "blog:generate": "node scripts/generate-post.mjs",
+    "prebuild": "node scripts/scrape-samson.mjs && node scripts/build-blog.mjs",
     "build": "tsc -b && vite build",
+    "postbuild": "node scripts/prerender-blog.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.104.1",
+    "marked": "^18.0.9",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-router-dom": "^7.14.2"

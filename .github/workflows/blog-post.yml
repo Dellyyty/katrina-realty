@@ -1,0 +1,84 @@
+name: Auto blog post (3x daily)
+
+on:
+  schedule:
+    # Times are UTC. During EDT: 6:00am, 2:00pm, 10:00pm ET.
+    - cron: '0 10 * * *'  # slot 1 — evergreen human post   (~6am ET)
+    - cron: '0 18 * * *'  # slot 2 — market news post       (~2pm ET)
+    - cron: '0 2 * * *'   # slot 3 — news, rotating law     (~10pm ET)
+  workflow_dispatch:
+    inputs:
+      post_type:
+        description: 'Post type'
+        required: false
+        default: 'evergreen'
+        type: choice
+        options: [evergreen, news, news-law]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: blog-post
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Determine post type for this slot
+        id: slot
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "post_type=${{ inputs.post_type }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "0 10 * * *" ]; then
+            echo "post_type=evergreen" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "0 18 * * *" ]; then
+            echo "post_type=news" >> "$GITHUB_OUTPUT"
+          else
+            # Slot 3 alternates: odd days of the month -> real estate LAW news,
+            # even days -> second market/local news post.
+            DAY=$(TZ=America/New_York date +%d)
+            if [ $((10#$DAY % 2)) -eq 1 ]; then
+              echo "post_type=news-law" >> "$GITHUB_OUTPUT"
+            else
+              echo "post_type=news" >> "$GITHUB_OUTPUT"
+            fi
+          fi
+
+      - name: Generate post
+        id: gen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          POST_TYPE: ${{ steps.slot.outputs.post_type }}
+        run: node scripts/generate-post.mjs
+
+      - name: Commit and push (triggers Netlify deploy)
+        run: |
+          git config user.name "kks-blog-bot"
+          git config user.email "actions@github.com"
+          git add content/posts
+          git diff --cached --quiet && { echo "nothing to commit"; exit 0; }
+          git commit -m "blog: auto post (${{ steps.slot.outputs.post_type }}) $(TZ=America/New_York date +%F)"
+          git pull --rebase origin main
+          git push origin main
+
+      - name: IndexNow ping (Bing/Yandex/etc.)
+        if: steps.gen.outputs.post_url != ''
+        continue-on-error: true
+        run: |
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "host": "kkstherealtor.com",
+              "key": "c1a2cb27ab6dedad4e540432a84b0315",
+              "keyLocation": "https://kkstherealtor.com/c1a2cb27ab6dedad4e540432a84b0315.txt",
+              "urlList": ["${{ steps.gen.outputs.post_url }}", "https://kkstherealtor.com/blog", "https://kkstherealtor.com/sitemap.xml"]
+            }'
+          echo "IndexNow pinged for ${{ steps.gen.outputs.post_url }}"

@@ -30,3 +30,7 @@ dist-ssr
 
 # Netlify
 .netlify
+
+# generated blog artifacts
+public/blog-data/
+public/sitemap.xml
